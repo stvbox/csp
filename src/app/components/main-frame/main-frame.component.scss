@@ -1,0 +1,36 @@
+:host {
+    display: flex;
+    flex: 0 0 100%;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.main-frame {
+    display: flex;
+    flex: 0 0 100%;
+    align-items: stretch;
+    overflow: hidden;
+
+    .menu {
+        flex: 0 1 20%;
+        font-size: 20px;
+        padding-top: 10px;
+        text-align: left;
+
+        li {
+            padding: 5px;
+        }
+    }
+
+    .app-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 100%;
+
+        .content-wrapper {
+            display: flex;
+            flex: 0 0 100%;
+            overflow: hidden;
+        }
+    }
+}

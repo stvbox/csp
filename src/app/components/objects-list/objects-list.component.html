@@ -1,0 +1,31 @@
+<div class="objects-list">
+    <div class="header-bar">
+        <h1 class="page-title"> Объекты </h1>
+        <div class="option-bar">
+            <a class="config-button"
+                routerLink="/objects-types"
+                routerLinkActive="active">*</a>
+            <div>Иванов Иван Иванович</div>
+        </div>
+    </div>
+    <div class="navigation-bar">
+        <div class="search">
+            Поиск: <input />
+        </div>
+        <div class="pagination">
+            пагинация
+        </div>
+    </div>
+    <div class="items-list">
+        <div *ngFor="let item of items"
+            class="items-list-item">
+            <a (click)="openObjectInfo(item)">Какоето название какогото объекта {{ item }} </a>
+            <p>
+                авно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum
+                используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное
+                распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст..
+                Здесь ваш текст.. Здесь ваш текст.."
+            </p>
+        </div>
+    </div>
+</div>

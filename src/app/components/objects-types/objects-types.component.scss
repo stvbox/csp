@@ -1,0 +1,19 @@
+:host {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+}
+
+.header-bar {
+    display: flex;
+    flex-direction: row;
+
+    .page-title {
+        flex: 1 1 100%;
+        font-size: 30px;
+    }
+
+    .option-bar {
+        display: flex;
+    }
+}
