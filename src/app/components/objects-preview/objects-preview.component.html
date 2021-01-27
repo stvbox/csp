@@ -1,0 +1,17 @@
+<ng-container *ngIf="template == 'card' && objectType">
+    <div>Тип: {{ objectType.name }}</div>
+    <ul>
+        <ng-container *ngFor="let attr of objectType.attributes">
+            <li>{{ attr.name }}({{ attr.type }}): {{ objectInfo.attributes[attr.code] }}</li>
+        </ng-container>
+    </ul>
+</ng-container>
+
+<ng-container *ngIf="template == 'listItem' && objectType">
+    <a (click)="clickObject.emit(objectInfo)">{{ objectType.name }}</a>
+    <ul>
+        <ng-container *ngFor="let attr of objectType.attributes">
+            <li>{{ attr.name }}({{ attr.type }}): {{ objectInfo.attributes[attr.code] }}</li>
+        </ng-container>
+    </ul>
+</ng-container>

@@ -1,4 +1,59 @@
+<div class="header-bar">
+    <h1 class="page-title"> Объект
+        <ng-container *ngIf="currentObjectId != '0'">
+            #{{ currentObjectId }}
+        </ng-container>
+    </h1>
+    <div class="option-bar">
+        <a class="config-button"
+            routerLink="/objects-types"
+            routerLinkActive="active">*</a>
+        <div>Иванов Иван Иванович</div>
+    </div>
+</div>
 
+<div class="attributes-links-wrapper">
+    <div style="padding: 5px;">
+        <div class="card">
+            <div class="card-body">
+                <ng-container *ngIf="formMode == FormModes.View">
+                    <objects-preview [objectInfo]="objectInfo"
+                        [objectType]="objectType"
+                        template="card"></objects-preview>
+                    <div class="buttom-bar">
+                        <button (click)="editObjectInfo(objectInfo.id)"
+                            type="button"
+                            class="btn btn-primary btn-sm">изменить</button>
+                    </div>
+                </ng-container>
+                <objects-edit-attrs *ngIf="formMode == FormModes.Edit"
+                    [objectInfo]="objectInfo"
+                    (create.object)="onCreateObject($event)"></objects-edit-attrs>
+            </div>
+        </div>
+    </div>
 
-
-Детальный просмотр документа
+    <div *ngIf="formMode == FormModes.View"
+        style="padding: 5px;">
+        <div class="card">
+            <div class="card-body">
+                связанные объекты
+                <div *ngFor="let link of links"
+                    style="padding: 5px;">
+                    <div>
+                        <a (click)="openObjectInfo(link)">
+                            Наименование объекта
+                        </a>
+                    </div>
+                    <div>Атрибут1: "значение1"</div>
+                    <div>Атрибут2: "значение2"</div>
+                    <div>Атрибут3: "значение3"</div>
+                </div>
+                <div class="buttom-bar">
+                    <div (click)="addObjectInfo()"
+                        class="buttom-bar-button">add</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

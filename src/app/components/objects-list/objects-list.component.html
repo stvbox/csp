@@ -8,24 +8,43 @@
             <div>Иванов Иван Иванович</div>
         </div>
     </div>
-    <div class="navigation-bar">
-        <div class="search">
-            Поиск: <input />
-        </div>
-        <div class="pagination">
-            пагинация
-        </div>
-    </div>
+
+    <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+            <a (click)="createObject()">добавить</a>
+            <input class="form-control form-control-sm mr-sm-2"
+                type="search"
+                placeholder="Поиск..."
+                aria-label="Search">
+            <button class="btn btn-sm btn-outline-success my-2 my-sm-0"
+                type="submit">Search</button>
+        </form>
+        <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+                <a class="page-link"
+                    href="#"
+                    tabindex="-1"
+                    aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link"
+                    href="#">1</a></li>
+            <li class="page-item"><a class="page-link"
+                    href="#">2</a></li>
+            <li class="page-item"><a class="page-link"
+                    href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link"
+                    href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+
     <div class="items-list">
-        <div *ngFor="let item of items"
+        <div *ngFor="let object of objects"
             class="items-list-item">
-            <a (click)="openObjectInfo(item)">Какоето название какогото объекта {{ item }} </a>
-            <p>
-                авно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum
-                используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное
-                распределение букв и пробелов в абзацах, которое не получается при простой дубликации "Здесь ваш текст..
-                Здесь ваш текст.. Здесь ваш текст.."
-            </p>
+            <objects-preview [objectInfo]="object"
+                [objectType]="objectsTypesByCode[object.objectType]"
+                (object.click)="openObjectInfo($event)"></objects-preview>
         </div>
     </div>
 </div>

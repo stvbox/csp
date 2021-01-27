@@ -1,0 +1,12 @@
+.buttom-bar {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: right;
+    padding: 4px;
+
+    .buttom-bar-button {
+        flex: 0 0 20px;
+        cursor: pointer;
+        border: 1px red solid;
+    }
+}
