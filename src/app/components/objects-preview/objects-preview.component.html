@@ -8,7 +8,9 @@
 </ng-container>
 
 <ng-container *ngIf="template == 'listItem' && objectType">
-    <a (click)="clickObject.emit(objectInfo)">{{ objectType.name }}</a>
+    <a (click)="clickObject.emit(objectInfo)"
+        class="text-decoration-none"
+        style="cursor: pointer;">{{ objectType.name }} #{{ objectInfo.id }}</a>
     <ul>
         <ng-container *ngFor="let attr of objectType.attributes">
             <li>{{ attr.name }}({{ attr.type }}): {{ objectInfo.attributes[attr.code] }}</li>
