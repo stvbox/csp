@@ -1,23 +1,26 @@
 <div style="padding: 5px;">
     <div>Тип объекта</div>
     <select *ngIf="!objectInfo"
-        [formControl]="selectType">
+            [formControl]="selectType">
         <option *ngFor="let type of objectsTypes"
-            [value]="type.code">{{ type.name }}</option>
+                [value]="type.code">{{ type.name }}</option>
     </select>
 </div>
 
 <ng-container *ngIf="currentObjectsType">
     <div *ngFor="let attr of currentObjectsType.attributes"
-        style="padding: 5px;">
+         style="padding: 5px;">
         <div>{{ attr.name }} ({{ attr.type }})</div>
         <input [formControl]="attributesForm.controls[attr.code]" />
     </div>
 
     <div class="buttom-bar">
+        <button (click)="cancel()"
+                type="button"
+                class="btn btn-outline-secondary btn-sm">отмена</button>
         <button (click)="saveObjectInfo()"
-            type="button"
-            class="btn btn-primary btn-sm">сохранить</button>
+                type="button"
+                class="btn btn-primary btn-sm">сохранить</button>
     </div>
 
     <div>

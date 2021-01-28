@@ -71,7 +71,10 @@ export class ObjectsDetailComponent extends BaseComponent implements OnInit {
   }
 
   onCreateObject(objectId: string) {
-    console.log('objectId: ' + objectId);
+    this.openObjectInfo(objectId);
+  }
+
+  onCancelAction(objectId: string) {
     this.openObjectInfo(objectId);
   }
 

@@ -14,6 +14,7 @@ export class ObjectsEditAttrsComponent extends BaseComponent implements OnInit {
     @Input() objectInfo: IObjectInfo;
 
     @Output('create.object') objectCreate: EventEmitter<String> = new EventEmitter();
+    @Output('cancel.action') actionCancel: EventEmitter<String> = new EventEmitter();
 
     attributesForm: FormGroup;
     selectType: FormControl = new FormControl('');
@@ -63,5 +64,9 @@ export class ObjectsEditAttrsComponent extends BaseComponent implements OnInit {
             this.objectCreate.next(objectId);
             //this.router.navigate([`/objects/${objectId}`]);
         });
+    }
+
+    cancel() {
+        this.actionCancel.next(this.objectInfo.id);
     }
 }

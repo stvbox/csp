@@ -3,50 +3,52 @@
         <h1 class="page-title"> Объекты </h1>
         <div class="option-bar">
             <a class="config-button"
-                routerLink="/objects-types"
-                routerLinkActive="active">*</a>
+               routerLink="/objects-types"
+               routerLinkActive="active">*</a>
             <div>Иванов Иван Иванович</div>
         </div>
     </div>
 
     <nav class="navbar navbar-light bg-light">
         <form class="form-inline">
-            
-            <a (click)="createObject()"><i class="bi-file-earmark-plus"></i></a>
+
+            <a (click)="createObject()" style="cursor: pointer;">
+                <i class="bi-file-earmark-plus"></i>
+            </a>
 
             <input class="form-control form-control-sm mr-sm-2"
-                type="search"
-                placeholder="Поиск..."
-                aria-label="Search">
+                   type="search"
+                   placeholder="Поиск..."
+                   aria-label="Search">
             <button class="btn btn-sm btn-outline-success my-2 my-sm-0"
-                type="submit">Search</button>
+                    type="submit">Search</button>
         </form>
         <ul class="pagination justify-content-end">
             <li class="page-item disabled">
                 <a class="page-link"
-                    href="#"
-                    tabindex="-1"
-                    aria-disabled="true">Previous</a>
+                   href="#"
+                   tabindex="-1"
+                   aria-disabled="true">Previous</a>
             </li>
             <li class="page-item"><a class="page-link"
-                    href="#">1</a></li>
+                   href="#">1</a></li>
             <li class="page-item"><a class="page-link"
-                    href="#">2</a></li>
+                   href="#">2</a></li>
             <li class="page-item"><a class="page-link"
-                    href="#">3</a></li>
+                   href="#">3</a></li>
             <li class="page-item">
                 <a class="page-link"
-                    href="#">Next</a>
+                   href="#">Next</a>
             </li>
         </ul>
     </nav>
 
     <div class="items-list">
         <div *ngFor="let object of objects"
-            class="items-list-item">
+             class="items-list-item">
             <objects-preview [objectInfo]="object"
-                [objectType]="objectsTypesByCode[object.objectType]"
-                (object.click)="openObjectInfo($event)"></objects-preview>
+                             [objectType]="objectsTypesByCode[object.objectType]"
+                             (object.click)="openObjectInfo($event)"></objects-preview>
         </div>
     </div>
 </div>
