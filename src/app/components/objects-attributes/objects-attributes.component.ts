@@ -23,7 +23,7 @@ export class ObjectsAttributesComponent extends BaseComponent implements OnInit,
     @Input() actionsTemplate: TemplateRef<any>;
 
     @Output('object.click')
-    public clickObject: EventEmitter<IObjectInfo> = new EventEmitter();
+    public clickObject: EventEmitter<string> = new EventEmitter();
 
     attributes: Array<IAttributItem>;
 

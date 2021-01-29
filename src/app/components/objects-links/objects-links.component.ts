@@ -1,8 +1,11 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, EventEmitter, Output } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
 import { takeUntil } from "rxjs/operators";
 import { IObjectInfo, IObjectsType } from "src/app/core.types";
 import { ObjectsService } from "src/app/services/objects.service";
 import { BaseComponent } from "../base.component";
+import { ObjectsListPickerDialog } from "../objects-list/objects-list-picker/objects-list-picker.component";
+import { ObjectsListComponent } from "../objects-list/objects-list.component";
 
 @Component({
     selector: 'objects-links',
@@ -19,6 +22,7 @@ export class ObjectsLinksComponent extends BaseComponent implements OnInit, OnCh
 
     constructor(
         private objectsSvc: ObjectsService,
+        public dialogSvc: MatDialog,
     ) {
         super();
     }
@@ -34,7 +38,16 @@ export class ObjectsLinksComponent extends BaseComponent implements OnInit, OnCh
     }
 
     addObjectLink() {
+        console.log('create');
 
+        const dialogRef = this.dialogSvc.open(ObjectsListPickerDialog);
+        dialogRef.afterClosed().pipe(
+            takeUntil(this.unsubscribe),
+        ).subscribe((linkObjectId) => {
+            this.objectsSvc.createLink(this.objectInfo.id, linkObjectId).pipe(
+                takeUntil(this.unsubscribe),
+            ).subscribe(() => this.initLinkObjects());
+        });
     }
 
     initLinkObjects() {
@@ -46,7 +59,8 @@ export class ObjectsLinksComponent extends BaseComponent implements OnInit, OnCh
     }
 
     unlinkObject(linkedObjectId: string) {
-        this.objectsSvc.removeLink(this.objectInfo.id, linkedObjectId);
-        this.initLinkObjects();
+        this.objectsSvc.removeLink(this.objectInfo.id, linkedObjectId).pipe(
+            takeUntil(this.unsubscribe),
+        ).subscribe(() => this.initLinkObjects());
     }
 }

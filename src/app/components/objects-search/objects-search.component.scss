@@ -1,0 +1,48 @@
+:host {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+}
+
+.objects-list {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+    overflow: hidden;
+
+    .header-bar {
+        display: flex;
+        flex-direction: row;
+
+        .page-title {
+            flex: 1 1 100%;
+            font-size: 30px;
+        }
+
+        .option-bar {
+            display: flex;
+        }
+    }
+
+    .navigation-bar {
+        display: flex;
+        justify-content: space-between;
+
+        .search {
+            border: 1px red solid;
+        }
+        .pagination {
+            border: 1px green solid;
+        }
+    }
+
+    .items-list {
+        flex: 1 1 100%;
+        overflow: hidden;
+        overflow-y: scroll;
+
+        .items-list-item {
+            margin: 10px;
+        }
+    }
+}

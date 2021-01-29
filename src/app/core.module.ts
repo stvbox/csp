@@ -10,6 +10,10 @@ import { ObjectsService } from './services/objects.service';
 import { ObjectsAttributesComponent } from './components/objects-attributes/objects-attributes.component';
 import { ObjectsEditAttrsComponent } from './components/objects-edit-attrs/objects-edit-attrs.component';
 import { ObjectsLinksComponent } from './components/objects-links/objects-links.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ObjectsListPickerDialog } from './components/objects-list/objects-list-picker/objects-list-picker.component';
+import { ObjectsSearchComponent } from './components/objects-search/objects-search.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +24,15 @@ import { ObjectsLinksComponent } from './components/objects-links/objects-links.
     ObjectsAttributesComponent,
     ObjectsEditAttrsComponent,
     ObjectsLinksComponent,
+    ObjectsListPickerDialog,
+    ObjectsSearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     ObjectsService

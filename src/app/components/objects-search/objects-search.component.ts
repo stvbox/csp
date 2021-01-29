@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, TemplateRef } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { Router } from "@angular/router";
 import { takeUntil } from "rxjs/operators";
 import { IObjectInfo, IObjectsType } from "src/app/core.types";
@@ -6,14 +6,12 @@ import { ObjectsService } from "src/app/services/objects.service";
 import { BaseComponent } from "../base.component";
 
 @Component({
-  selector: 'objects-list',
-  templateUrl: './objects-list.component.html',
-  styleUrls: ['./objects-list.component.scss']
+  selector: 'objects-search',
+  templateUrl: './objects-search.component.html',
+  styleUrls: ['./objects-search.component.scss']
 })
-export class ObjectsListComponent extends BaseComponent implements OnInit {
-  @Input() actionsTemplate: TemplateRef<any>;
-
-  @Output('object.click') clickObject: EventEmitter<string> = new EventEmitter();
+export class ObjectsSearchComponent extends BaseComponent implements OnInit {
+  @Output() clickObject: EventEmitter<string> = new EventEmitter();
 
   objectsTypesByCode: { [index: string]: IObjectsType };
   objects: IObjectInfo[];
@@ -40,6 +38,10 @@ export class ObjectsListComponent extends BaseComponent implements OnInit {
         return memo;
       }, {});
     });
+  }
+
+  openObjectInfo(objectId: string) {
+    this.router.navigate([`/objects/${objectId}`]);
   }
 
   createObject() {

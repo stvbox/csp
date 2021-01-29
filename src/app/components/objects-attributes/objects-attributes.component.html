@@ -9,7 +9,7 @@
 
 <ng-container *ngIf="template == 'listItem' && objectType">
     <div class="object-link">
-        <a (click)="clickObject.emit(objectInfo)"
+        <a (click)="clickObject.emit(objectInfo.id)"
            class="text-decoration-none"
            style="cursor: pointer;">{{ objectType.name }} #{{ objectInfo.id }}</a>
         <ng-container *ngIf="actionsTemplate">

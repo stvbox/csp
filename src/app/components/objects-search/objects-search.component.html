@@ -1,0 +1,23 @@
+<div class="objects-list">
+    <div class="header-bar">
+        <h1 class="page-title"> Объекты </h1>
+        <div class="option-bar">
+            <a class="config-button"
+               routerLink="/objects-types"
+               routerLinkActive="active">*</a>
+            <div>Иванов Иван Иванович</div>
+        </div>
+    </div>
+
+    <objects-list [actionsTemplate]="actionsTemplate"
+                  (object.click)="openObjectInfo($event)"
+                  class="items-list"></objects-list>
+</div>
+
+<ng-template #actionsTemplate
+             let-params="params">
+    <a (click)="createObject()"
+       style="cursor: pointer;">
+        <i class="bi-file-earmark-plus"></i>
+    </a>
+</ng-template>
