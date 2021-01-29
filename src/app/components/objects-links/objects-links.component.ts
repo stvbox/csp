@@ -17,7 +17,9 @@ export class ObjectsLinksComponent extends BaseComponent implements OnInit, OnCh
 
     links: IObjectInfo[];
 
-    constructor(private objectsSvc: ObjectsService,) {
+    constructor(
+        private objectsSvc: ObjectsService,
+    ) {
         super();
     }
 
@@ -39,11 +41,12 @@ export class ObjectsLinksComponent extends BaseComponent implements OnInit, OnCh
         this.objectsSvc.getObjectsById(this.objectInfo.links).pipe(
             takeUntil(this.unsubscribe),
         ).subscribe((objects) => {
-            this.links = objects;
+            this.links = [...objects];
         });
     }
 
-    unlinkObject(objectId: string) {
-        console.log('objectId: ' + objectId);
+    unlinkObject(linkedObjectId: string) {
+        this.objectsSvc.removeLink(this.objectInfo.id, linkedObjectId);
+        this.initLinkObjects();
     }
 }

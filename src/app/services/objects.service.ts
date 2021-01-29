@@ -54,6 +54,12 @@ const MOCK_OBJECTS_TYPES: IObjectsType[] = [{
 })
 export class ObjectsService {
 
+    removeLink(objectId: string, linkedObjectId: string) {
+        this.getObjectById(objectId).subscribe((object) => {
+            object.links = object.links.filter((obj) => obj != linkedObjectId);
+        });
+    }
+
     getObjectsById(links: string[]): Observable<IObjectInfo[]> {
         const objects = MOCK_OBJECTS.filter((objectInfo) => {
             return links.includes(objectInfo.id);
