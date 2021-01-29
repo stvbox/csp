@@ -11,14 +11,24 @@ const MOCK_OBJECTS: IObjectInfo[] = [{
         attr2: 'attr222222222',
         attr3: 'attr33333333',
         attr4: 'attr4444444',
-    }
+    },
+    links: ['2', '3'],
 }, {
     id: '2',
     objectType: 'secondCode',
     attributes: {
         attr1123: 'Один атрибут',
         attr3522: 'Второй атрибут',
-    }
+    },
+    links: ['1'],
+}, {
+    id: '3',
+    objectType: 'secondCode',
+    attributes: {
+        attr1123: 'Атрибут третьего объекта',
+        attr3522: 'Еще атрибут третьего объекта',
+    },
+    links: ['1', '2'],
 }];
 
 const MOCK_OBJECTS_TYPES: IObjectsType[] = [{
@@ -43,6 +53,13 @@ const MOCK_OBJECTS_TYPES: IObjectsType[] = [{
     providedIn: 'root',
 })
 export class ObjectsService {
+
+    getObjectsById(links: string[]): Observable<IObjectInfo[]> {
+        const objects = MOCK_OBJECTS.filter((objectInfo) => {
+            return links.includes(objectInfo.id);
+        });
+        return of(objects);
+    }
 
     getObjectById(objectId: string): Observable<IObjectInfo> {
         return this.getObjects().pipe(

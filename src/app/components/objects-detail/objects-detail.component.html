@@ -17,9 +17,9 @@
         <div class="card">
             <div class="card-body">
                 <ng-container *ngIf="formMode == FormModes.View">
-                    <objects-preview [objectInfo]="objectInfo"
-                                     [objectType]="objectType"
-                                     template="card"></objects-preview>
+                    <objects-attributes [objectInfo]="objectInfo"
+                                        [objectType]="objectType"
+                                        template="card"></objects-attributes>
                     <div class="buttom-bar">
                         <button (click)="editObjectInfo(objectInfo.id)"
                                 type="button"
@@ -39,23 +39,10 @@
         <div class="card">
             <div class="card-body">
                 связанные объекты
-                <div *ngFor="let link of links"
-                     style="padding: 5px;">
-                    <div>
-                        <a (click)="openObjectInfo(link)">
-                            Наименование объекта
-                        </a>
-                    </div>
-                    <div>Атрибут1: "значение1"</div>
-                    <div>Атрибут2: "значение2"</div>
-                    <div>Атрибут3: "значение3"</div>
-                </div>
 
-                <div class="buttom-bar">
-                    <button (click)="addObjectInfo()"
-                            type="button"
-                            class="btn btn-primary btn-sm">добавить</button>
-                </div>
+                <objects-links [objectInfo]="objectInfo"
+                               [objectType]="objectType"
+                               (link.click)="openObjectInfo($event)"></objects-links>
 
             </div>
         </div>

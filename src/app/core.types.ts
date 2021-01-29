@@ -33,4 +33,5 @@ export interface IObjectInfo {
     id: string;
     objectType: string;
     attributes: { [index: string]: any };
+    links: string[];
 }

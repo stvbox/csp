@@ -1,0 +1,33 @@
+<div *ngFor="let object of links"
+     style="padding: 5px;">
+    <!-- <div>
+        <a (click)="clickLink.next(object.id)"
+           class="text-decoration-none">
+            {{ object.objectType }} # {{ object.id }}
+        </a>
+    </div>
+    <div>Атрибут1: "значение1"</div>
+    <div>Атрибут2: "значение2"</div>
+    <div>Атрибут3: "значение3"</div> -->
+
+    <objects-attributes [objectInfo]="object"
+                        (object.click)="clickLink.next(object.id)"
+                        [actionsTemplate]="actionsTemplate"
+                        template="listItem"></objects-attributes>
+
+</div>
+
+<div class="buttom-bar">
+    <button (click)="addObjectLink()"
+            type="button"
+            class="btn btn-primary btn-sm">добавить</button>
+</div>
+
+
+<ng-template #actionsTemplate
+             let-object='object'>
+    <a (click)="unlinkObject(object.id)"
+       style="cursor: pointer;">
+        <i class="journal-x"></i>
+    </a>
+</ng-template>

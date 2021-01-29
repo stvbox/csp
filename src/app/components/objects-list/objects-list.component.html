@@ -46,9 +46,9 @@
     <div class="items-list">
         <div *ngFor="let object of objects"
              class="items-list-item">
-            <objects-preview [objectInfo]="object"
+            <objects-attributes [objectInfo]="object"
                              [objectType]="objectsTypesByCode[object.objectType]"
-                             (object.click)="openObjectInfo($event)"></objects-preview>
+                             (object.click)="openObjectInfo($event)"></objects-attributes>
         </div>
     </div>
 </div>

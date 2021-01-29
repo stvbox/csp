@@ -7,8 +7,9 @@ import { ObjectsDetailComponent } from './components/objects-detail/objects-deta
 import { ObjectsTypesComponent } from './components/objects-types/objects-types.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ObjectsService } from './services/objects.service';
-import { ObjectsPreviewComponent } from './components/objects-preview/objects-preview.component';
+import { ObjectsAttributesComponent } from './components/objects-attributes/objects-attributes.component';
 import { ObjectsEditAttrsComponent } from './components/objects-edit-attrs/objects-edit-attrs.component';
+import { ObjectsLinksComponent } from './components/objects-links/objects-links.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +17,9 @@ import { ObjectsEditAttrsComponent } from './components/objects-edit-attrs/objec
     ObjectsTypesComponent,
     ObjectsListComponent,
     ObjectsDetailComponent,
-    ObjectsPreviewComponent,
+    ObjectsAttributesComponent,
     ObjectsEditAttrsComponent,
+    ObjectsLinksComponent,
   ],
   imports: [
     BrowserModule,
