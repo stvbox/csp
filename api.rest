@@ -1,0 +1,56 @@
+GET http://localhost:8080/csp/api/auth/login HTTP/1.1
+
+###
+
+POST http://localhost:8080/csp/api/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "pereverzev-sm",
+    "password": "Amrpxdx951!Sm"
+}
+###
+
+POST http://localhost:8080/csp/api/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "pereverzev-sm",
+    "password": "Amrpxdx951!Sm"
+}
+###
+
+GET http://localhost:8080/csp/api/v1/objects/all  HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+###
+
+POST http://localhost:8080/csp/api/auth/login HTTP/1.1
+
+{
+    "username": "pereverzev-sm",
+    "password": "Amrpxdx951!Sm"
+}
+###
+
+POST http://localhost:4200/csp/api/auth/login HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+username=pereverzev-sm&password=Amrpxdx951!Sm
+####
+
+GET http://localhost:4200/csp/api/auth/logout HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+username=pereverzev-sm&password=Amrpxdx951!Sm
+####
+
+GET http://localhost:4200/csp/api/auth/login HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+username=pereverzev-sm&password=Amrpxdx951!Sm
+####
+
+GET http://localhost:4200/csp/api/v1/objects/all  HTTP/1.1
+
+###

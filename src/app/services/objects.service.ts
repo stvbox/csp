@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { map, switchMap } from "rxjs/operators";
+import { map } from "rxjs/operators";
 import { AttrValueTypes, DeletedFlag, IObjectInfo, IObjectStateParams, IObjectsType } from "../core.types";
+import { CspApiService } from "./csp-api.service.service";
 
 const MOCK_OBJECTS: IObjectInfo[] = [{
     id: '1',
@@ -54,6 +55,8 @@ const MOCK_OBJECTS_TYPES: IObjectsType[] = [{
 })
 export class ObjectsService {
 
+    constructor(private cspApiSvc: CspApiService) { }
+
     createLink(objectId: string, linkObjectId: string): Observable<any> {
         return this.getObjectById(objectId).pipe(
             map((object) => {
@@ -89,7 +92,8 @@ export class ObjectsService {
     }
 
     getObjects(): Observable<IObjectInfo[]> {
-        return of(MOCK_OBJECTS);
+        return this.cspApiSvc.get('/csp/api/v1/objects/all');
+        //return of(MOCK_OBJECTS);
     }
 
     saveObjectState(objectId: string, state: IObjectStateParams): Observable<any> {
